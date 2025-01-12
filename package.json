@@ -1,0 +1,31 @@
+{
+  "name": "@mindsmodern/design-primitives",
+  "repository": {
+    "type": "git",
+    "repository": "https://github.com/mindsmodern/design-primitives.git"
+  },
+  "version": "0.0.6",
+  "description": "Common primitives for Minds Modern Design System",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -r ./dist/* && tsc && vite build && ./scripts/build-scss.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "vite": "^5.4.11"
+  },
+  "main": "dist/main.js",
+  "files": [
+    "dist/**"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/main.d.ts",
+      "require": "./dist/main.umd.cjs",
+      "default": "./dist/main.js"
+    },
+    "./styles.scss": "./dist/styles.scss"
+  },
+  "packageManager": "pnpm@9.15.1"
+}
