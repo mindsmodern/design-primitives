@@ -8,7 +8,7 @@
   "description": "Common primitives for Minds Modern Design System",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -r ./dist/* && tsc && vite build && ./scripts/build-scss.js"
+    "build": "tsc && vite build && ./scripts/build-scss.js"
   },
   "devDependencies": {
     "typescript": "^5.0.0",
