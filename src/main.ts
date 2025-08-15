@@ -57,4 +57,5 @@ const theme = {
 };
 
 export default theme;
+export { theme };
 export type MMDesignPrimitives = typeof theme;
