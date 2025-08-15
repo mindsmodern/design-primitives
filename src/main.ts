@@ -31,9 +31,9 @@ const theme = {
       semibold: "600",
     },
     family: {
-      sans: "'Pretendard'",
-      serif: "'Noto Serif Korean'",
-      mono: "'D2Coding'",
+      sans: "'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+      serif: "'Noto Serif Korean', 'Noto Serif', Georgia, 'Times New Roman', serif",
+      mono: "'D2Coding', 'SF Mono', Monaco, Inconsolata, 'Roboto Mono', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace",
     },
     dimension: {
       small: {
