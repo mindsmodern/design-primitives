@@ -84,7 +84,7 @@ export const Typography: Story = {
       
       const familySample = document.createElement('div');
       familySample.className = `typography-family-sample typography-family-sample--${name}`;
-      familySample.textContent = 'The quick brown fox jumps over the lazy dog';
+      familySample.innerHTML = '다람쥐 헌 쳇바퀴에 타고파<br>The quick brown fox jumps over the lazy dog';
       
       const familyInfo = document.createElement('div');
       familyInfo.className = 'typography-family-info';
@@ -124,7 +124,7 @@ export const Typography: Story = {
       
       const weightSample = document.createElement('div');
       weightSample.className = `typography-weight-sample typography-weight-sample--${name}`;
-      weightSample.textContent = 'Sample Text';
+      weightSample.innerHTML = '다람쥐 헌 쳇바퀴에 타고파<br>The quick brown fox jumps over the lazy dog';
       
       const weightInfo = document.createElement('div');
       weightInfo.className = 'typography-weight-info';
@@ -161,7 +161,7 @@ export const Typography: Story = {
       
       const dimensionSample = document.createElement('div');
       dimensionSample.className = `typography-dimension-sample typography-dimension-sample--${name}`;
-      dimensionSample.textContent = `Sample text at ${name} size`;
+      dimensionSample.innerHTML = `다람쥐 헌 쳇바퀴에 타고파<br>The quick brown fox jumps over the lazy dog`;
       
       const dimensionInfo = document.createElement('div');
       dimensionInfo.className = 'typography-dimension-info';
