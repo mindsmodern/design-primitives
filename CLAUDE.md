@@ -38,6 +38,14 @@ The library provides dual consumption methods:
 
 The build process automatically generates SCSS variables by traversing the theme object and converting nested properties to kebab-case variable names (e.g., `theme.palette.functional.primary` becomes `$palette-functional-primary`).
 
+### Storybook Integration
+
+Storybook is configured to showcase the design tokens with SCSS integration:
+- Stories use SCSS classes that reference the generated design token variables
+- SCSS variables are automatically imported via Vite configuration
+- Typography includes fallback font stacks for better cross-platform compatibility
+- All visual components demonstrate real usage of the design tokens
+
 ### Package Configuration
 
 - Exports both CommonJS (`dist/main.umd.cjs`) and ESM (`dist/main.js`) formats

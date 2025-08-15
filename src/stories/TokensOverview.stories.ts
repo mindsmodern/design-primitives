@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/html';
+import type { Meta, StoryObj } from '@storybook/html-vite';
 import theme from '../main';
+import './design-tokens.scss';
 
 const meta: Meta = {
   title: 'Design System/Overview',
@@ -18,41 +19,29 @@ type Story = StoryObj;
 export const AllTokens: Story = {
   render: () => {
     const container = document.createElement('div');
-    container.style.fontFamily = 'system-ui, sans-serif';
-    container.style.padding = '20px';
-    container.style.maxWidth = '1200px';
+    container.className = 'design-tokens-container';
     
     const title = document.createElement('h1');
     title.textContent = 'Minds Modern Design Primitives';
-    title.style.marginBottom = '8px';
-    title.style.color = theme.palette.functional.primary;
+    title.className = 'design-tokens-title';
     container.appendChild(title);
     
     const subtitle = document.createElement('p');
     subtitle.textContent = 'Complete design token reference for the Minds Modern Design System';
-    subtitle.style.marginBottom = '32px';
-    subtitle.style.color = '#666';
-    subtitle.style.fontSize = '16px';
+    subtitle.className = 'design-tokens-subtitle';
     container.appendChild(subtitle);
     
     // Token structure visualization
     const structureSection = document.createElement('div');
-    structureSection.style.marginBottom = '40px';
+    structureSection.className = 'design-tokens-section';
     
     const structureTitle = document.createElement('h2');
     structureTitle.textContent = 'Token Structure';
-    structureTitle.style.marginBottom = '16px';
+    structureTitle.className = 'design-tokens-section-title';
     structureSection.appendChild(structureTitle);
     
     const tokenTree = document.createElement('div');
-    tokenTree.style.fontFamily = 'monospace';
-    tokenTree.style.fontSize = '14px';
-    tokenTree.style.backgroundColor = '#f8f9fa';
-    tokenTree.style.padding = '16px';
-    tokenTree.style.borderRadius = '8px';
-    tokenTree.style.border = '1px solid #e9ecef';
-    tokenTree.style.whiteSpace = 'pre';
-    tokenTree.style.lineHeight = '1.4';
+    tokenTree.className = 'token-tree';
     
     function renderTokenTree(obj: any, container: HTMLElement, prefix = '') {
       const entries = Object.entries(obj);
@@ -63,8 +52,7 @@ export const AllTokens: Story = {
         const nextPrefix = prefix + (isLastItem ? '    ' : '│   ');
         
         const line = document.createElement('div');
-        line.style.margin = '0';
-        line.style.padding = '0';
+        line.className = 'token-tree-line';
         line.textContent = prefix + connector;
         
         if (typeof value === 'object' && value !== null) {
@@ -75,7 +63,7 @@ export const AllTokens: Story = {
           renderTokenTree(value, container, nextPrefix);
         } else {
           const keySpan = document.createElement('span');
-          keySpan.style.color = theme.palette.functional.primary;
+          keySpan.className = 'token-tree-key';
           keySpan.textContent = key;
           line.appendChild(keySpan);
           
@@ -83,10 +71,8 @@ export const AllTokens: Story = {
           line.appendChild(separator);
           
           const valueCode = document.createElement('code');
+          valueCode.className = 'token-tree-value';
           valueCode.textContent = String(value);
-          valueCode.style.backgroundColor = '#e9ecef';
-          valueCode.style.padding = '2px 4px';
-          valueCode.style.borderRadius = '3px';
           line.appendChild(valueCode);
           
           container.appendChild(line);
@@ -95,8 +81,7 @@ export const AllTokens: Story = {
     }
     
     const themeRoot = document.createElement('div');
-    themeRoot.style.margin = '0';
-    themeRoot.style.padding = '0';
+    themeRoot.className = 'token-tree-line';
     const rootTitle = document.createElement('strong');
     rootTitle.textContent = 'theme';
     themeRoot.appendChild(rootTitle);
@@ -108,91 +93,77 @@ export const AllTokens: Story = {
     
     // Quick reference cards
     const quickRefSection = document.createElement('div');
-    quickRefSection.style.marginBottom = '40px';
+    quickRefSection.className = 'design-tokens-section';
     
     const quickRefTitle = document.createElement('h2');
     quickRefTitle.textContent = 'Quick Reference';
-    quickRefTitle.style.marginBottom = '16px';
+    quickRefTitle.className = 'design-tokens-section-title';
     quickRefSection.appendChild(quickRefTitle);
     
     const cardsGrid = document.createElement('div');
-    cardsGrid.style.display = 'grid';
-    cardsGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
-    cardsGrid.style.gap = '20px';
+    cardsGrid.className = 'quick-ref-grid';
     
     // Colors card
     const colorsCard = document.createElement('div');
-    colorsCard.style.border = '1px solid #e0e0e0';
-    colorsCard.style.borderRadius = '12px';
-    colorsCard.style.padding = '20px';
-    colorsCard.style.backgroundColor = '#fff';
+    colorsCard.className = 'quick-ref-card';
     
     const colorsCardTitle = document.createElement('h3');
     colorsCardTitle.textContent = 'Colors';
-    colorsCardTitle.style.marginBottom = '12px';
-    colorsCardTitle.style.color = theme.palette.functional.primary;
+    colorsCardTitle.className = 'quick-ref-card-title';
     colorsCard.appendChild(colorsCardTitle);
     
     const colorSwatches = document.createElement('div');
-    colorSwatches.style.display = 'flex';
-    colorSwatches.style.gap = '4px';
-    colorSwatches.style.marginBottom = '8px';
+    colorSwatches.className = 'quick-ref-swatches';
     
-    Object.values(theme.palette.functional).forEach(color => {
+    Object.entries(theme.palette.functional).forEach(([name, color]) => {
       const swatch = document.createElement('div');
-      swatch.style.width = '20px';
-      swatch.style.height = '20px';
-      swatch.style.backgroundColor = color;
-      swatch.style.borderRadius = '4px';
-      swatch.style.border = '1px solid #e0e0e0';
+      swatch.className = `quick-ref-swatch color-swatch--${name}`;
       colorSwatches.appendChild(swatch);
     });
     
     colorsCard.appendChild(colorSwatches);
-    colorsCard.innerHTML += `<div style="font-size: 12px; color: #666;">${Object.keys(theme.palette.functional).length} functional colors</div>`;
+    
+    const colorsInfo = document.createElement('div');
+    colorsInfo.className = 'quick-ref-info';
+    colorsInfo.textContent = `${Object.keys(theme.palette.functional).length} functional colors`;
+    colorsCard.appendChild(colorsInfo);
     cardsGrid.appendChild(colorsCard);
     
     // Typography card
     const typographyCard = document.createElement('div');
-    typographyCard.style.border = '1px solid #e0e0e0';
-    typographyCard.style.borderRadius = '12px';
-    typographyCard.style.padding = '20px';
-    typographyCard.style.backgroundColor = '#fff';
+    typographyCard.className = 'quick-ref-card';
     
     const typographyCardTitle = document.createElement('h3');
     typographyCardTitle.textContent = 'Typography';
-    typographyCardTitle.style.marginBottom = '12px';
-    typographyCardTitle.style.color = theme.palette.functional.primary;
+    typographyCardTitle.className = 'quick-ref-card-title';
     typographyCard.appendChild(typographyCardTitle);
     
-    typographyCard.innerHTML += `
-      <div style="font-size: 12px; color: #666; line-height: 1.5;">
+    const typographyInfo = document.createElement('div');
+    typographyInfo.className = 'quick-ref-info';
+    typographyInfo.innerHTML = `
         <div>${Object.keys(theme.typography.family).length} font families</div>
         <div>${Object.keys(theme.typography.weight).length} font weights</div>
         <div>${Object.keys(theme.typography.dimension).length} size scales</div>
-      </div>
     `;
+    typographyCard.appendChild(typographyInfo);
     cardsGrid.appendChild(typographyCard);
     
     // Layout card
     const layoutCard = document.createElement('div');
-    layoutCard.style.border = '1px solid #e0e0e0';
-    layoutCard.style.borderRadius = '12px';
-    layoutCard.style.padding = '20px';
-    layoutCard.style.backgroundColor = '#fff';
+    layoutCard.className = 'quick-ref-card';
     
     const layoutCardTitle = document.createElement('h3');
     layoutCardTitle.textContent = 'Layout';
-    layoutCardTitle.style.marginBottom = '12px';
-    layoutCardTitle.style.color = theme.palette.functional.primary;
+    layoutCardTitle.className = 'quick-ref-card-title';
     layoutCard.appendChild(layoutCardTitle);
     
-    layoutCard.innerHTML += `
-      <div style="font-size: 12px; color: #666; line-height: 1.5;">
+    const layoutInfo = document.createElement('div');
+    layoutInfo.className = 'quick-ref-info';
+    layoutInfo.innerHTML = `
         <div>${Object.keys(theme.size.layout.gap).length} gap values</div>
         <div>${Object.keys(theme.size.layout.thickness).length} thickness values</div>
-      </div>
     `;
+    layoutCard.appendChild(layoutInfo);
     cardsGrid.appendChild(layoutCard);
     
     quickRefSection.appendChild(cardsGrid);
@@ -200,36 +171,27 @@ export const AllTokens: Story = {
     
     // Usage examples
     const usageSection = document.createElement('div');
+    usageSection.className = 'design-tokens-section';
     
     const usageTitle = document.createElement('h2');
     usageTitle.textContent = 'Usage Examples';
-    usageTitle.style.marginBottom = '16px';
+    usageTitle.className = 'design-tokens-section-title';
     usageSection.appendChild(usageTitle);
     
     const usageExamples = document.createElement('div');
-    usageExamples.style.display = 'grid';
-    usageExamples.style.gap = '16px';
+    usageExamples.className = 'usage-examples';
     
     // JavaScript example
     const jsExample = document.createElement('div');
-    jsExample.style.border = '1px solid #e0e0e0';
-    jsExample.style.borderRadius = '8px';
-    jsExample.style.overflow = 'hidden';
+    jsExample.className = 'usage-example';
     
     const jsExampleTitle = document.createElement('div');
     jsExampleTitle.textContent = 'JavaScript/TypeScript';
-    jsExampleTitle.style.padding = '12px 16px';
-    jsExampleTitle.style.backgroundColor = '#f8f9fa';
-    jsExampleTitle.style.fontWeight = '600';
-    jsExampleTitle.style.fontSize = '14px';
+    jsExampleTitle.className = 'usage-example-title';
     jsExample.appendChild(jsExampleTitle);
     
     const jsCode = document.createElement('pre');
-    jsCode.style.margin = '0';
-    jsCode.style.padding = '16px';
-    jsCode.style.backgroundColor = '#ffffff';
-    jsCode.style.fontSize = '12px';
-    jsCode.style.overflow = 'auto';
+    jsCode.className = 'usage-example-code';
     jsCode.textContent = `import theme from '@mindsmodern/design-primitives';
 
 // Use colors
@@ -250,24 +212,15 @@ element.style.borderWidth = theme.size.layout.thickness.thick;`;
     
     // SCSS example
     const scssExample = document.createElement('div');
-    scssExample.style.border = '1px solid #e0e0e0';
-    scssExample.style.borderRadius = '8px';
-    scssExample.style.overflow = 'hidden';
+    scssExample.className = 'usage-example';
     
     const scssExampleTitle = document.createElement('div');
     scssExampleTitle.textContent = 'SCSS';
-    scssExampleTitle.style.padding = '12px 16px';
-    scssExampleTitle.style.backgroundColor = '#f8f9fa';
-    scssExampleTitle.style.fontWeight = '600';
-    scssExampleTitle.style.fontSize = '14px';
+    scssExampleTitle.className = 'usage-example-title';
     scssExample.appendChild(scssExampleTitle);
     
     const scssCode = document.createElement('pre');
-    scssCode.style.margin = '0';
-    scssCode.style.padding = '16px';
-    scssCode.style.backgroundColor = '#ffffff';
-    scssCode.style.fontSize = '12px';
-    scssCode.style.overflow = 'auto';
+    scssCode.className = 'usage-example-code';
     scssCode.textContent = `@import '@mindsmodern/design-primitives/styles.scss';
 
 .button {

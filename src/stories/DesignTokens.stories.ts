@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/html';
+import type { Meta, StoryObj } from '@storybook/html-vite';
 import theme from '../main';
+import './design-tokens.scss';
 
 const meta: Meta = {
   title: 'Design System/Design Tokens',
@@ -18,37 +19,36 @@ type Story = StoryObj;
 export const Colors: Story = {
   render: () => {
     const container = document.createElement('div');
-    container.style.fontFamily = 'system-ui, sans-serif';
-    container.style.padding = '20px';
+    container.className = 'design-tokens-container';
     
     const title = document.createElement('h2');
     title.textContent = 'Color Palette';
-    title.style.marginBottom = '20px';
+    title.className = 'design-tokens-section-title';
     container.appendChild(title);
     
     const colorGrid = document.createElement('div');
-    colorGrid.style.display = 'grid';
-    colorGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(200px, 1fr))';
-    colorGrid.style.gap = '16px';
+    colorGrid.className = 'color-grid';
     
     Object.entries(theme.palette.functional).forEach(([name, color]) => {
       const colorCard = document.createElement('div');
-      colorCard.style.border = '1px solid #e0e0e0';
-      colorCard.style.borderRadius = '8px';
-      colorCard.style.overflow = 'hidden';
+      colorCard.className = 'color-card';
       
       const colorSwatch = document.createElement('div');
-      colorSwatch.style.backgroundColor = color;
-      colorSwatch.style.height = '80px';
-      colorSwatch.style.width = '100%';
+      colorSwatch.className = `color-swatch color-swatch--${name}`;
       
       const colorInfo = document.createElement('div');
-      colorInfo.style.padding = '12px';
-      colorInfo.innerHTML = `
-        <strong style="text-transform: capitalize; font-size: 14px;">${name}</strong><br>
-        <code style="font-size: 12px; color: #666;">${color}</code>
-      `;
+      colorInfo.className = 'color-info';
       
+      const colorName = document.createElement('div');
+      colorName.className = 'color-name';
+      colorName.textContent = name;
+      
+      const colorValue = document.createElement('code');
+      colorValue.className = 'color-value';
+      colorValue.textContent = color;
+      
+      colorInfo.appendChild(colorName);
+      colorInfo.appendChild(colorValue);
       colorCard.appendChild(colorSwatch);
       colorCard.appendChild(colorInfo);
       colorGrid.appendChild(colorCard);
@@ -62,37 +62,45 @@ export const Colors: Story = {
 export const Typography: Story = {
   render: () => {
     const container = document.createElement('div');
-    container.style.fontFamily = 'system-ui, sans-serif';
-    container.style.padding = '20px';
+    container.className = 'design-tokens-container';
     
     const title = document.createElement('h2');
     title.textContent = 'Typography';
-    title.style.marginBottom = '20px';
+    title.className = 'design-tokens-section-title';
     container.appendChild(title);
     
     // Font Families
     const familiesSection = document.createElement('div');
-    familiesSection.style.marginBottom = '32px';
+    familiesSection.className = 'design-tokens-subsection';
     
     const familiesTitle = document.createElement('h3');
     familiesTitle.textContent = 'Font Families';
-    familiesTitle.style.marginBottom = '16px';
+    familiesTitle.className = 'design-tokens-subsection-title';
     familiesSection.appendChild(familiesTitle);
     
     Object.entries(theme.typography.family).forEach(([name, family]) => {
       const familyExample = document.createElement('div');
-      familyExample.style.marginBottom = '12px';
-      familyExample.style.padding = '12px';
-      familyExample.style.border = '1px solid #e0e0e0';
-      familyExample.style.borderRadius = '4px';
-      familyExample.innerHTML = `
-        <div style="font-family: ${family}; font-size: 16px; margin-bottom: 4px;">
-          The quick brown fox jumps over the lazy dog
-        </div>
-        <div style="font-size: 12px; color: #666;">
-          <strong>${name}:</strong> <code>${family}</code>
-        </div>
-      `;
+      familyExample.className = 'typography-family-example';
+      
+      const familySample = document.createElement('div');
+      familySample.className = `typography-family-sample typography-family-sample--${name}`;
+      familySample.textContent = 'The quick brown fox jumps over the lazy dog';
+      
+      const familyInfo = document.createElement('div');
+      familyInfo.className = 'typography-family-info';
+      
+      const familyNameSpan = document.createElement('span');
+      familyNameSpan.className = 'typography-family-name';
+      familyNameSpan.textContent = `${name}: `;
+      
+      const familyValueSpan = document.createElement('code');
+      familyValueSpan.className = 'typography-family-value';
+      familyValueSpan.textContent = family;
+      
+      familyInfo.appendChild(familyNameSpan);
+      familyInfo.appendChild(familyValueSpan);
+      familyExample.appendChild(familySample);
+      familyExample.appendChild(familyInfo);
       familiesSection.appendChild(familyExample);
     });
     
@@ -100,29 +108,38 @@ export const Typography: Story = {
     
     // Font Weights
     const weightsSection = document.createElement('div');
-    weightsSection.style.marginBottom = '32px';
+    weightsSection.className = 'design-tokens-subsection';
     
     const weightsTitle = document.createElement('h3');
     weightsTitle.textContent = 'Font Weights';
-    weightsTitle.style.marginBottom = '16px';
+    weightsTitle.className = 'design-tokens-subsection-title';
     weightsSection.appendChild(weightsTitle);
     
     const weightsGrid = document.createElement('div');
-    weightsGrid.style.display = 'grid';
-    weightsGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(150px, 1fr))';
-    weightsGrid.style.gap = '12px';
+    weightsGrid.className = 'typography-weights-grid';
     
     Object.entries(theme.typography.weight).forEach(([name, weight]) => {
       const weightExample = document.createElement('div');
-      weightExample.style.padding = '12px';
-      weightExample.style.border = '1px solid #e0e0e0';
-      weightExample.style.borderRadius = '4px';
-      weightExample.innerHTML = `
-        <div style="font-weight: ${weight}; margin-bottom: 4px;">Sample Text</div>
-        <div style="font-size: 12px; color: #666;">
-          <strong>${name}:</strong> ${weight}
-        </div>
-      `;
+      weightExample.className = 'typography-weight-example';
+      
+      const weightSample = document.createElement('div');
+      weightSample.className = `typography-weight-sample typography-weight-sample--${name}`;
+      weightSample.textContent = 'Sample Text';
+      
+      const weightInfo = document.createElement('div');
+      weightInfo.className = 'typography-weight-info';
+      
+      const weightNameSpan = document.createElement('span');
+      weightNameSpan.className = 'typography-weight-name';
+      weightNameSpan.textContent = `${name}: `;
+      
+      const weightValueSpan = document.createElement('span');
+      weightValueSpan.textContent = weight;
+      
+      weightInfo.appendChild(weightNameSpan);
+      weightInfo.appendChild(weightValueSpan);
+      weightExample.appendChild(weightSample);
+      weightExample.appendChild(weightInfo);
       weightsGrid.appendChild(weightExample);
     });
     
@@ -131,26 +148,35 @@ export const Typography: Story = {
     
     // Font Dimensions
     const dimensionsSection = document.createElement('div');
+    dimensionsSection.className = 'design-tokens-subsection';
     
     const dimensionsTitle = document.createElement('h3');
     dimensionsTitle.textContent = 'Font Dimensions';
-    dimensionsTitle.style.marginBottom = '16px';
+    dimensionsTitle.className = 'design-tokens-subsection-title';
     dimensionsSection.appendChild(dimensionsTitle);
     
     Object.entries(theme.typography.dimension).forEach(([name, dimension]) => {
       const dimensionExample = document.createElement('div');
-      dimensionExample.style.marginBottom = '16px';
-      dimensionExample.style.padding = '12px';
-      dimensionExample.style.border = '1px solid #e0e0e0';
-      dimensionExample.style.borderRadius = '4px';
-      dimensionExample.innerHTML = `
-        <div style="font-size: ${dimension.size}; line-height: ${dimension.height}; margin-bottom: 8px;">
-          Sample text at ${name} size
-        </div>
-        <div style="font-size: 12px; color: #666;">
-          <strong>${name}:</strong> ${dimension.size} / ${dimension.height}
-        </div>
-      `;
+      dimensionExample.className = 'typography-dimension-example';
+      
+      const dimensionSample = document.createElement('div');
+      dimensionSample.className = `typography-dimension-sample typography-dimension-sample--${name}`;
+      dimensionSample.textContent = `Sample text at ${name} size`;
+      
+      const dimensionInfo = document.createElement('div');
+      dimensionInfo.className = 'typography-dimension-info';
+      
+      const dimensionNameSpan = document.createElement('span');
+      dimensionNameSpan.className = 'typography-dimension-name';
+      dimensionNameSpan.textContent = `${name}: `;
+      
+      const dimensionValueSpan = document.createElement('span');
+      dimensionValueSpan.textContent = `${dimension.size} / ${dimension.height}`;
+      
+      dimensionInfo.appendChild(dimensionNameSpan);
+      dimensionInfo.appendChild(dimensionValueSpan);
+      dimensionExample.appendChild(dimensionSample);
+      dimensionExample.appendChild(dimensionInfo);
       dimensionsSection.appendChild(dimensionExample);
     });
     
@@ -162,49 +188,47 @@ export const Typography: Story = {
 export const Spacing: Story = {
   render: () => {
     const container = document.createElement('div');
-    container.style.fontFamily = 'system-ui, sans-serif';
-    container.style.padding = '20px';
+    container.className = 'design-tokens-container';
     
     const title = document.createElement('h2');
     title.textContent = 'Spacing & Layout';
-    title.style.marginBottom = '20px';
+    title.className = 'design-tokens-section-title';
     container.appendChild(title);
     
     // Gap values
     const gapSection = document.createElement('div');
-    gapSection.style.marginBottom = '32px';
+    gapSection.className = 'design-tokens-subsection';
     
     const gapTitle = document.createElement('h3');
     gapTitle.textContent = 'Gap Values';
-    gapTitle.style.marginBottom = '16px';
+    gapTitle.className = 'design-tokens-subsection-title';
     gapSection.appendChild(gapTitle);
     
     Object.entries(theme.size.layout.gap).forEach(([name, value]) => {
       const gapExample = document.createElement('div');
-      gapExample.style.marginBottom = '16px';
-      gapExample.style.padding = '12px';
-      gapExample.style.border = '1px solid #e0e0e0';
-      gapExample.style.borderRadius = '4px';
+      gapExample.className = 'spacing-example';
       
       const gapVisualization = document.createElement('div');
-      gapVisualization.style.display = 'flex';
-      gapVisualization.style.gap = value;
-      gapVisualization.style.marginBottom = '8px';
+      gapVisualization.className = `spacing-visualization spacing-visualization--${name}`;
       
       for (let i = 0; i < 3; i++) {
         const box = document.createElement('div');
-        box.style.width = '40px';
-        box.style.height = '40px';
-        box.style.backgroundColor = theme.palette.functional.primary;
-        box.style.borderRadius = '4px';
+        box.className = 'spacing-box';
         gapVisualization.appendChild(box);
       }
       
       const gapInfo = document.createElement('div');
-      gapInfo.style.fontSize = '12px';
-      gapInfo.style.color = '#666';
-      gapInfo.innerHTML = `<strong>${name}:</strong> ${value}`;
+      gapInfo.className = 'spacing-info';
       
+      const gapNameSpan = document.createElement('span');
+      gapNameSpan.className = 'spacing-name';
+      gapNameSpan.textContent = `${name}: `;
+      
+      const gapValueSpan = document.createElement('span');
+      gapValueSpan.textContent = value;
+      
+      gapInfo.appendChild(gapNameSpan);
+      gapInfo.appendChild(gapValueSpan);
       gapExample.appendChild(gapVisualization);
       gapExample.appendChild(gapInfo);
       gapSection.appendChild(gapExample);
@@ -214,31 +238,32 @@ export const Spacing: Story = {
     
     // Thickness values
     const thicknessSection = document.createElement('div');
+    thicknessSection.className = 'design-tokens-subsection';
     
     const thicknessTitle = document.createElement('h3');
     thicknessTitle.textContent = 'Border Thickness';
-    thicknessTitle.style.marginBottom = '16px';
+    thicknessTitle.className = 'design-tokens-subsection-title';
     thicknessSection.appendChild(thicknessTitle);
     
     Object.entries(theme.size.layout.thickness).forEach(([name, value]) => {
       const thicknessExample = document.createElement('div');
-      thicknessExample.style.marginBottom = '16px';
-      thicknessExample.style.padding = '12px';
-      thicknessExample.style.border = '1px solid #e0e0e0';
-      thicknessExample.style.borderRadius = '4px';
+      thicknessExample.className = 'thickness-example';
       
       const thicknessVisualization = document.createElement('div');
-      thicknessVisualization.style.width = '100%';
-      thicknessVisualization.style.height = '40px';
-      thicknessVisualization.style.border = `${value} solid ${theme.palette.functional.primary}`;
-      thicknessVisualization.style.marginBottom = '8px';
-      thicknessVisualization.style.borderRadius = '4px';
+      thicknessVisualization.className = `thickness-visualization thickness-visualization--${name}`;
       
       const thicknessInfo = document.createElement('div');
-      thicknessInfo.style.fontSize = '12px';
-      thicknessInfo.style.color = '#666';
-      thicknessInfo.innerHTML = `<strong>${name}:</strong> ${value}`;
+      thicknessInfo.className = 'thickness-info';
       
+      const thicknessNameSpan = document.createElement('span');
+      thicknessNameSpan.className = 'thickness-name';
+      thicknessNameSpan.textContent = `${name}: `;
+      
+      const thicknessValueSpan = document.createElement('span');
+      thicknessValueSpan.textContent = value;
+      
+      thicknessInfo.appendChild(thicknessNameSpan);
+      thicknessInfo.appendChild(thicknessValueSpan);
       thicknessExample.appendChild(thicknessVisualization);
       thicknessExample.appendChild(thicknessInfo);
       thicknessSection.appendChild(thicknessExample);
