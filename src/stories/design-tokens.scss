@@ -1,22 +1,22 @@
 // Import generated design tokens
-@import '../../dist/styles.scss';
+@use '../../dist/styles.scss' as tokens;
 
 // Base container styles
 .design-tokens-container {
-  font-family: $typography-family-sans;
+  font-family: tokens.$typography-family-sans;
   padding: 20px;
   max-width: 1200px;
 }
 
 .design-tokens-title {
   margin-bottom: 8px;
-  color: $palette-functional-primary;
+  color: tokens.$palette-functional-primary;
 }
 
 .design-tokens-subtitle {
   margin-bottom: 32px;
   color: #666;
-  font-size: $typography-dimension-medium-size;
+  font-size: tokens.$typography-dimension-medium-size;
 }
 
 .design-tokens-section {
@@ -39,11 +39,11 @@
 .color-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: $typography-dimension-medium-size;
+  gap: tokens.$typography-dimension-medium-size;
 }
 
 .color-card {
-  border: $size-layout-thickness-thick solid $palette-functional-border;
+  border: tokens.$size-layout-thickness-thick solid tokens.$palette-functional-border;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -53,12 +53,12 @@
   width: 100%;
 }
 
-.color-swatch--primary { background-color: $palette-functional-primary; }
-.color-swatch--secondary { background-color: $palette-functional-secondary; }
-.color-swatch--tertiary { background-color: $palette-functional-tertiary; }
-.color-swatch--background { background-color: $palette-functional-background; }
-.color-swatch--border { background-color: $palette-functional-border; }
-.color-swatch--foreground { background-color: $palette-functional-foreground; }
+.color-swatch--primary { background-color: tokens.$palette-functional-primary; }
+.color-swatch--secondary { background-color: tokens.$palette-functional-secondary; }
+.color-swatch--tertiary { background-color: tokens.$palette-functional-tertiary; }
+.color-swatch--background { background-color: tokens.$palette-functional-background; }
+.color-swatch--border { background-color: tokens.$palette-functional-border; }
+.color-swatch--foreground { background-color: tokens.$palette-functional-foreground; }
 
 .color-info {
   padding: 12px;
@@ -67,31 +67,31 @@
 .color-name {
   text-transform: capitalize;
   font-size: 14px;
-  font-weight: $typography-weight-semibold;
+  font-weight: tokens.$typography-weight-semibold;
 }
 
 .color-value {
   font-size: 12px;
   color: #666;
-  font-family: $typography-family-mono;
+  font-family: tokens.$typography-family-mono;
 }
 
 // Typography components
 .typography-family-example {
   margin-bottom: 12px;
   padding: 12px;
-  border: $size-layout-thickness-thick solid $palette-functional-border;
+  border: tokens.$size-layout-thickness-thick solid tokens.$palette-functional-border;
   border-radius: 4px;
 }
 
 .typography-family-sample {
-  font-size: $typography-dimension-medium-size;
+  font-size: tokens.$typography-dimension-medium-size;
   margin-bottom: 4px;
 }
 
-.typography-family-sample--sans { font-family: $typography-family-sans; }
-.typography-family-sample--serif { font-family: $typography-family-serif; }
-.typography-family-sample--mono { font-family: $typography-family-mono; }
+.typography-family-sample--sans { font-family: tokens.$typography-family-sans; }
+.typography-family-sample--serif { font-family: tokens.$typography-family-serif; }
+.typography-family-sample--mono { font-family: tokens.$typography-family-mono; }
 
 .typography-family-info {
   font-size: 12px;
@@ -99,11 +99,11 @@
 }
 
 .typography-family-name {
-  font-weight: $typography-weight-semibold;
+  font-weight: tokens.$typography-weight-semibold;
 }
 
 .typography-family-value {
-  font-family: $typography-family-mono;
+  font-family: tokens.$typography-family-mono;
 }
 
 // Font weights grid
@@ -115,7 +115,7 @@
 
 .typography-weight-example {
   padding: 12px;
-  border: $size-layout-thickness-thick solid $palette-functional-border;
+  border: tokens.$size-layout-thickness-thick solid tokens.$palette-functional-border;
   border-radius: 4px;
 }
 
@@ -123,10 +123,10 @@
   margin-bottom: 4px;
 }
 
-.typography-weight-sample--light { font-weight: $typography-weight-light; }
-.typography-weight-sample--normal { font-weight: $typography-weight-normal; }
-.typography-weight-sample--medium { font-weight: $typography-weight-medium; }
-.typography-weight-sample--semibold { font-weight: $typography-weight-semibold; }
+.typography-weight-sample--light { font-weight: tokens.$typography-weight-light; }
+.typography-weight-sample--normal { font-weight: tokens.$typography-weight-normal; }
+.typography-weight-sample--medium { font-weight: tokens.$typography-weight-medium; }
+.typography-weight-sample--semibold { font-weight: tokens.$typography-weight-semibold; }
 
 .typography-weight-info {
   font-size: 12px;
@@ -134,14 +134,14 @@
 }
 
 .typography-weight-name {
-  font-weight: $typography-weight-semibold;
+  font-weight: tokens.$typography-weight-semibold;
 }
 
 // Font dimensions
 .typography-dimension-example {
-  margin-bottom: $typography-dimension-medium-size;
+  margin-bottom: tokens.$typography-dimension-medium-size;
   padding: 12px;
-  border: $size-layout-thickness-thick solid $palette-functional-border;
+  border: tokens.$size-layout-thickness-thick solid tokens.$palette-functional-border;
   border-radius: 4px;
 }
 
@@ -150,23 +150,23 @@
 }
 
 .typography-dimension-sample--small {
-  font-size: $typography-dimension-small-size;
-  line-height: $typography-dimension-small-height;
+  font-size: tokens.$typography-dimension-small-size;
+  line-height: tokens.$typography-dimension-small-height;
 }
 
 .typography-dimension-sample--medium {
-  font-size: $typography-dimension-medium-size;
-  line-height: $typography-dimension-medium-height;
+  font-size: tokens.$typography-dimension-medium-size;
+  line-height: tokens.$typography-dimension-medium-height;
 }
 
 .typography-dimension-sample--large {
-  font-size: $typography-dimension-large-size;
-  line-height: $typography-dimension-large-height;
+  font-size: tokens.$typography-dimension-large-size;
+  line-height: tokens.$typography-dimension-large-height;
 }
 
 .typography-dimension-sample--xlarge {
-  font-size: $typography-dimension-xlarge-size;
-  line-height: $typography-dimension-xlarge-height;
+  font-size: tokens.$typography-dimension-xlarge-size;
+  line-height: tokens.$typography-dimension-xlarge-height;
 }
 
 .typography-dimension-info {
@@ -175,14 +175,14 @@
 }
 
 .typography-dimension-name {
-  font-weight: $typography-weight-semibold;
+  font-weight: tokens.$typography-weight-semibold;
 }
 
 // Spacing components
 .spacing-example {
-  margin-bottom: $typography-dimension-medium-size;
+  margin-bottom: tokens.$typography-dimension-medium-size;
   padding: 12px;
-  border: $size-layout-thickness-thick solid $palette-functional-border;
+  border: tokens.$size-layout-thickness-thick solid tokens.$palette-functional-border;
   border-radius: 4px;
 }
 
@@ -191,14 +191,14 @@
   margin-bottom: 8px;
 }
 
-.spacing-visualization--condensed { gap: $size-layout-gap-condensed; }
-.spacing-visualization--normal { gap: $size-layout-gap-normal; }
-.spacing-visualization--spacious { gap: $size-layout-gap-spacious; }
+.spacing-visualization--condensed { gap: tokens.$size-layout-gap-condensed; }
+.spacing-visualization--normal { gap: tokens.$size-layout-gap-normal; }
+.spacing-visualization--spacious { gap: tokens.$size-layout-gap-spacious; }
 
 .spacing-box {
   width: 40px;
   height: 40px;
-  background-color: $palette-functional-primary;
+  background-color: tokens.$palette-functional-primary;
   border-radius: 4px;
 }
 
@@ -208,14 +208,14 @@
 }
 
 .spacing-name {
-  font-weight: $typography-weight-semibold;
+  font-weight: tokens.$typography-weight-semibold;
 }
 
 // Thickness components
 .thickness-example {
-  margin-bottom: $typography-dimension-medium-size;
+  margin-bottom: tokens.$typography-dimension-medium-size;
   padding: 12px;
-  border: $size-layout-thickness-thick solid $palette-functional-border;
+  border: tokens.$size-layout-thickness-thick solid tokens.$palette-functional-border;
   border-radius: 4px;
 }
 
@@ -227,15 +227,15 @@
 }
 
 .thickness-visualization--thin {
-  border: $size-layout-thickness-thin solid $palette-functional-primary;
+  border: tokens.$size-layout-thickness-thin solid tokens.$palette-functional-primary;
 }
 
 .thickness-visualization--thick {
-  border: $size-layout-thickness-thick solid $palette-functional-primary;
+  border: tokens.$size-layout-thickness-thick solid tokens.$palette-functional-primary;
 }
 
 .thickness-visualization--thicker {
-  border: $size-layout-thickness-thicker solid $palette-functional-primary;
+  border: tokens.$size-layout-thickness-thicker solid tokens.$palette-functional-primary;
 }
 
 .thickness-info {
@@ -244,17 +244,17 @@
 }
 
 .thickness-name {
-  font-weight: $typography-weight-semibold;
+  font-weight: tokens.$typography-weight-semibold;
 }
 
 // Token tree styles
 .token-tree {
-  font-family: $typography-family-mono;
+  font-family: tokens.$typography-family-mono;
   font-size: 14px;
   background-color: #f8f9fa;
-  padding: $typography-dimension-medium-size;
+  padding: tokens.$typography-dimension-medium-size;
   border-radius: 8px;
-  border: $size-layout-thickness-thick solid #e9ecef;
+  border: tokens.$size-layout-thickness-thick solid #e9ecef;
   white-space: pre;
   line-height: 1.4;
 }
@@ -265,7 +265,7 @@
 }
 
 .token-tree-key {
-  color: $palette-functional-primary;
+  color: tokens.$palette-functional-primary;
 }
 
 .token-tree-value {
@@ -282,7 +282,7 @@
 }
 
 .quick-ref-card {
-  border: $size-layout-thickness-thick solid $palette-functional-border;
+  border: tokens.$size-layout-thickness-thick solid tokens.$palette-functional-border;
   border-radius: 12px;
   padding: 20px;
   background-color: white;
@@ -290,7 +290,7 @@
 
 .quick-ref-card-title {
   margin-bottom: 12px;
-  color: $palette-functional-primary;
+  color: tokens.$palette-functional-primary;
 }
 
 .quick-ref-swatches {
@@ -303,7 +303,7 @@
   width: 20px;
   height: 20px;
   border-radius: 4px;
-  border: $size-layout-thickness-thick solid $palette-functional-border;
+  border: tokens.$size-layout-thickness-thick solid tokens.$palette-functional-border;
 }
 
 .quick-ref-info {
@@ -315,27 +315,27 @@
 // Usage examples
 .usage-examples {
   display: grid;
-  gap: $typography-dimension-medium-size;
+  gap: tokens.$typography-dimension-medium-size;
 }
 
 .usage-example {
-  border: $size-layout-thickness-thick solid $palette-functional-border;
+  border: tokens.$size-layout-thickness-thick solid tokens.$palette-functional-border;
   border-radius: 8px;
   overflow: hidden;
 }
 
 .usage-example-title {
-  padding: 12px $typography-dimension-medium-size;
+  padding: 12px tokens.$typography-dimension-medium-size;
   background-color: #f8f9fa;
-  font-weight: $typography-weight-semibold;
+  font-weight: tokens.$typography-weight-semibold;
   font-size: 14px;
 }
 
 .usage-example-code {
   margin: 0;
-  padding: $typography-dimension-medium-size;
+  padding: tokens.$typography-dimension-medium-size;
   background-color: white;
   font-size: 12px;
-  font-family: $typography-family-mono;
+  font-family: tokens.$typography-family-mono;
   overflow: auto;
 }

@@ -13,12 +13,7 @@ const config: StorybookConfig = {
     "options": {}
   },
   "viteFinal": async (config) => {
-    // Ensure SCSS files are properly processed
-    config.css = config.css || {};
-    config.css.preprocessorOptions = config.css.preprocessorOptions || {};
-    config.css.preprocessorOptions.scss = {
-      additionalData: `@import "../dist/styles.scss";`
-    };
+    // SCSS files will handle their own imports using @use
     return config;
   }
 };
