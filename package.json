@@ -4,7 +4,7 @@
     "type": "git",
     "repository": "https://github.com/mindsmodern/design-primitives.git"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Common primitives for Minds Modern Design System",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
