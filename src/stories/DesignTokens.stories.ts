@@ -270,6 +270,87 @@ export const Spacing: Story = {
     });
     
     container.appendChild(thicknessSection);
+    
+    // Padding values
+    const paddingSection = document.createElement('div');
+    paddingSection.className = 'design-tokens-subsection';
+    
+    const paddingTitle = document.createElement('h3');
+    paddingTitle.textContent = 'Padding Values';
+    paddingTitle.className = 'design-tokens-subsection-title';
+    paddingSection.appendChild(paddingTitle);
+    
+    Object.entries(theme.size.layout.padding).forEach(([name, value]) => {
+      const paddingExample = document.createElement('div');
+      paddingExample.className = 'spacing-example';
+      
+      const paddingVisualization = document.createElement('div');
+      paddingVisualization.className = `padding-visualization padding-visualization--${name}`;
+      
+      const paddingBox = document.createElement('div');
+      paddingBox.className = 'padding-inner-box';
+      paddingBox.textContent = 'Lorem ipsum dolor sit amet, consectetur ' +
+        'adipiscing elit. In ac pretium mauris, id commodo arcu. Quisque ' +
+        'lacinia leo sit amet luctus pulvinar. Sed luctus hendrerit eros. ' +
+        'Nulla sodales pretium dignissim. Suspendisse sed ipsum placerat, ' +
+        'aliquet dolor non, efficitur ligula. Sed semper nec urna id ' +
+        'viverra. Vestibulum dictum felis fermentum tellus dignissim ' +
+        'euismod. Suspendisse bibendum pellentesque mauris in finibus.';
+      paddingVisualization.appendChild(paddingBox);
+      
+      const paddingInfo = document.createElement('div');
+      paddingInfo.className = 'spacing-info';
+      
+      const paddingNameSpan = document.createElement('span');
+      paddingNameSpan.className = 'spacing-name';
+      paddingNameSpan.textContent = `${name}: `;
+      
+      const paddingValueSpan = document.createElement('span');
+      paddingValueSpan.textContent = value;
+      
+      paddingInfo.appendChild(paddingNameSpan);
+      paddingInfo.appendChild(paddingValueSpan);
+      paddingExample.appendChild(paddingVisualization);
+      paddingExample.appendChild(paddingInfo);
+      paddingSection.appendChild(paddingExample);
+    });
+    
+    container.appendChild(paddingSection);
+    
+    // Border Radius values
+    const radiusSection = document.createElement('div');
+    radiusSection.className = 'design-tokens-subsection';
+    
+    const radiusTitle = document.createElement('h3');
+    radiusTitle.textContent = 'Border Radius';
+    radiusTitle.className = 'design-tokens-subsection-title';
+    radiusSection.appendChild(radiusTitle);
+    
+    Object.entries(theme.size.control.radius).forEach(([name, value]) => {
+      const radiusExample = document.createElement('div');
+      radiusExample.className = 'radius-example';
+      
+      const radiusVisualization = document.createElement('div');
+      radiusVisualization.className = `radius-visualization radius-visualization--${name}`;
+      
+      const radiusInfo = document.createElement('div');
+      radiusInfo.className = 'radius-info';
+      
+      const radiusNameSpan = document.createElement('span');
+      radiusNameSpan.className = 'radius-name';
+      radiusNameSpan.textContent = `${name}: `;
+      
+      const radiusValueSpan = document.createElement('span');
+      radiusValueSpan.textContent = value;
+      
+      radiusInfo.appendChild(radiusNameSpan);
+      radiusInfo.appendChild(radiusValueSpan);
+      radiusExample.appendChild(radiusVisualization);
+      radiusExample.appendChild(radiusInfo);
+      radiusSection.appendChild(radiusExample);
+    });
+    
+    container.appendChild(radiusSection);
     return container;
   },
 };

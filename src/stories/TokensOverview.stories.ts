@@ -161,7 +161,9 @@ export const AllTokens: Story = {
     layoutInfo.className = 'quick-ref-info';
     layoutInfo.innerHTML = `
         <div>${Object.keys(theme.size.layout.gap).length} gap values</div>
+        <div>${Object.keys(theme.size.layout.padding).length} padding values</div>
         <div>${Object.keys(theme.size.layout.thickness).length} thickness values</div>
+        <div>${Object.keys(theme.size.control.radius).length} border radius values</div>
     `;
     layoutCard.appendChild(layoutInfo);
     cardsGrid.appendChild(layoutCard);
@@ -205,7 +207,9 @@ element.style.fontWeight = theme.typography.weight.semibold;
 
 // Use layout values
 element.style.gap = theme.size.layout.gap.normal;
-element.style.borderWidth = theme.size.layout.thickness.thick;`;
+element.style.padding = theme.size.layout.padding.normal;
+element.style.borderWidth = theme.size.layout.thickness.thick;
+element.style.borderRadius = theme.size.control.radius.medium;`;
     
     jsExample.appendChild(jsCode);
     usageExamples.appendChild(jsExample);
@@ -229,8 +233,10 @@ element.style.borderWidth = theme.size.layout.thickness.thick;`;
   font-family: $typography-family-sans;
   font-size: $typography-dimension-medium-size;
   font-weight: $typography-weight-semibold;
-  padding: $size-layout-gap-normal;
+  padding: $size-layout-padding-normal;
+  gap: $size-layout-gap-normal;
   border: $size-layout-thickness-thick solid $palette-functional-border;
+  border-radius: $size-control-radius-medium;
 }`;
     
     scssExample.appendChild(scssCode);

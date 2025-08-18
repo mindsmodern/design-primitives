@@ -247,6 +247,59 @@
   font-weight: tokens.$typography-weight-semibold;
 }
 
+// Padding components
+.padding-visualization {
+  width: 100%;
+  margin-bottom: 8px;
+  border: tokens.$size-layout-thickness-thick solid tokens.$palette-functional-primary;
+  box-sizing: border-box;
+}
+
+.padding-visualization--condensed { padding: tokens.$size-layout-padding-condensed; }
+.padding-visualization--normal { padding: tokens.$size-layout-padding-normal; }
+.padding-visualization--spacious { padding: tokens.$size-layout-padding-spacious; }
+.padding-visualization--spacious2 { padding: tokens.$size-layout-padding-spacious2; }
+.padding-visualization--spacious3 { padding: tokens.$size-layout-padding-spacious3; }
+
+.padding-inner-box {
+  font-size: 12px;
+  line-height: 1.4;
+  box-sizing: border-box;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-align: justify;
+}
+
+// Border radius components
+.radius-example {
+  margin-bottom: tokens.$typography-dimension-medium-size;
+  padding: 12px;
+  border: tokens.$size-layout-thickness-thick solid tokens.$palette-functional-border;
+  border-radius: 4px;
+}
+
+.radius-visualization {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 8px;
+  border: tokens.$size-layout-thickness-thicker solid tokens.$palette-functional-primary;
+}
+
+.radius-visualization--small { border-radius: tokens.$size-control-radius-small; }
+.radius-visualization--medium { border-radius: tokens.$size-control-radius-medium; }
+.radius-visualization--large { border-radius: tokens.$size-control-radius-large; }
+.radius-visualization--full { border-radius: tokens.$size-control-radius-full; }
+
+.radius-info {
+  font-size: 12px;
+  color: #666;
+}
+
+.radius-name {
+  font-weight: tokens.$typography-weight-semibold;
+}
+
 // Token tree styles
 .token-tree {
   font-family: tokens.$typography-family-mono;
