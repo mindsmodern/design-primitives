@@ -12,16 +12,31 @@ const theme = {
   size: {
     layout: {
       gap: {
-        condensed: "0.5em",
-        normal: "1em",
-        spacious: "1.5em",
+        condensed: "0.5rem",
+        normal: "1rem",
+        spacious: "1.5rem",
       },
       thickness: {
         thin: "0.5px",
         thick: "1px",
         thicker: "2px",
       },
+      padding: {
+        condensed: "0.5rem",
+        normal: "1rem",
+        spacious: "1.5rem",
+        spacious2: "2rem",
+        spacious3: "3rem"
+      }
     },
+    control: {
+      borderRadius: {
+        small: "0.2rem",
+        medium: "0.35rem",
+        large: "0.5rem",
+        full: "624.9375rem"
+      }
+    }
   },
   typography: {
     weight: {
