@@ -30,7 +30,7 @@ const theme = {
       }
     },
     control: {
-      borderRadius: {
+      radius: {
         small: "0.2rem",
         medium: "0.35rem",
         large: "0.5rem",
